@@ -25,7 +25,7 @@ test('Register and Login Test', async ({page}) => {
     await page.goto('https://rahulshettyacademy.com/client/#/auth/login');
 
     // Assert the title of the page
-    await expect(page).toHaveTitle("Let's Shop");
+    await expect(page).toHaveTitle("Let's Shops");
 
     // Click the Register button
     await btn_HomeRegister.click();

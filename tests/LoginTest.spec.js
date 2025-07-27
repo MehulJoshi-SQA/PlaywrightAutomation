@@ -1,4 +1,5 @@
 const {test, expect} = require('@playwright/test');
+const { userName, password } = require('../Utilities/envHelper.js');
 
 test('First Basic UI Interaction Test', async ({page}) => {
 
@@ -9,14 +10,14 @@ test('First Basic UI Interaction Test', async ({page}) => {
     const cardTitles = page.locator('.card-body a');
 
     // Navigate to the login page
-    await page.goto('https://rahulshettyacademy.com/loginpagePractise/');
+    await page.goto('/loginpagePractise/');
 
     // Assert the title of the page
     await expect(page).toHaveTitle('LoginPage Practise | Rahul Shetty Academy');
 
     // Fill in the username and password fields
-    await txt_userName.fill('rahulshettyacademy');
-    await txt_password.fill('learning');
+    await txt_userName.fill(userName);
+    await txt_password.fill(password);
 
     // Click the login button
     await btn_login.click();

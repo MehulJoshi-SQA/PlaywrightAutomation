@@ -1,9 +1,13 @@
 // @ts-check
-import { defineConfig, devices } from '@playwright/test';
+const { defineConfig, devices } = require('@playwright/test');
+
+// Importing the base URL and other environment variables from envHelper.js
+const { baseURL} = require('./Utilities/envHelper.js');
 
 /**
  * @see https://playwright.dev/docs/test-configuration
  */
+
 export default defineConfig({
   testDir: './tests',
 
@@ -19,7 +23,11 @@ export default defineConfig({
   },
 
   //Reporter to use.
-  reporter: 'html',
+  reporter: [
+    ['html'],
+    ['list'],
+    ['allure-playwright']
+ ],
   
   use: {
     browserName: 'chromium',
@@ -28,6 +36,7 @@ export default defineConfig({
     launchOptions: {
     args: ['--start-maximized'],
     },
+    baseURL
     //trace: 'on-first-retry',
   },
 });
